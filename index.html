@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./imgs/favicon-32x32.png">
+    <link rel="icon" href="./imgs/favicon-16x16.png"> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Notable&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Bloxd Events</title>
+    <style>
+        :root {
+            --text-color: #ffd4d4;
+            --btn-back: #ff7474;
+            --ui-back: #675858;
+            --ui-border: rgba(248, 206, 206, 0.16);
+            --accent: #ff8e8e;
+            --dark-bg: #181818;
+            --card-bg: rgba(39, 36, 36, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 650px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./imgs/backimg.png');
+            background-size: cover;
+            background-position: center;
+            filter: blur(6px) brightness(0.5);
+            z-index: -1;
+        }
+
+        .title {
+            font-family: 'Notable', sans-serif;
+            font-size: 5.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+        }
+
+        .cta-button {
+            background-color: var(--btn-back);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: #ff5c5c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Grid Section */
+        .features {
+            padding: 100px 0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+
+        .grid-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--ui-border);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .item-1 {
+            grid-column: span 6;
+            background: linear-gradient(135deg, var(--ui-back), #524545);
+        }
+
+        .item-2 {
+            grid-column: span 6;
+            background: linear-gradient(135deg, #5a4c4c, var(--ui-back));
+        }
+
+        .item-3 {
+            grid-column: span 4;
+        }
+
+        .item-4 {
+            grid-column: span 4;
+        }
+
+        .item-5 {
+            grid-column: span 4;
+        }
+
+        .item-6 {
+            grid-column: span 8;
+            background: linear-gradient(135deg, #4a3f3f, #5e5050);
+        }
+
+        .item-7 {
+            grid-column: span 4;
+        }
+
+        .grid-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .grid-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .grid-text {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #e2cbcb;
+            flex-grow: 1;
+        }
+
+        .grid-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.4s ease;
+        }
+
+        .grid-link:hover {
+            color: #fcacac;
+        }
+
+        .grid-link i {
+            margin-left: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* Links Section */
+        .quick-links {
+            padding: 80px 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid var(--ui-border);
+            border-bottom: 1px solid var(--ui-border);
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .link-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .link-icon {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .link-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .link-button {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--text-color);
+            border-radius: 50px;
+            margin-top: 15px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .link-button:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: #a18d8d;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .title {
+                font-size: 4.5rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            
+            .item-1, .item-2, .item-6 {
+                grid-column: span 6;
+            }
+            
+            .item-3, .item-4, .item-5, .item-7 {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-item {
+                grid-column: span 1 !important;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        span {
+            color: var(--accent);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="title">BLOXD<span>EVENTS</span></h1>
+        <p class="subtitle">Join the ultimate experience with competitive events, creative building, and an amazing community</p>
+        <button class="cta-button">Get Started</button>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="features container">
+        <div class="grid-container">
+            <div class="grid-item item-1">
+                <i class="grid-icon fas fa-hands-helping"></i>
+                <h3 class="grid-title">Apply as Helper/Builder/Coder</h3>
+                <p class="grid-text">Become part of our team and help create amazing experiences for our community. We're looking for talented builders and dedicated players.</p>
+                <a href="./Signup" class="grid-link" target="_blank">Apply Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="grid-item item-2">
+                <i class="grid-icon fas fa-trophy"></i>
+                <h3 class="grid-title">View Leaderboard</h3>
+                <p class="grid-text">Check out the top players and see where you rank in our competitive events. Climb the ranks and earn your place at the top!</p>
+                <a href="./Leaderboard" class="grid-link" target="_blank">View Rankings <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="grid-item item-3">
+                <i class="grid-icon fas fa-star"></i>
+                <h3 class="grid-title">Sponsor Us</h3>
+                <p class="grid-text">Support our community and get your brand in front of thousands of dedicated gamers.</p>
+                <a href="#" class="grid-link">Sponsorship Info <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="grid-item item-4">
+                <i class="grid-icon fas fa-certificate"></i>
+                <h3 class="grid-title">Certificates</h3>
+                <p class="grid-text">Earn verified certificates for your achievements and showcase your skills to the world.</p>
+                <a href="#" class="grid-link">View Certificates <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="grid-item item-5">
+                <i class="grid-icon fas fa-calendar-alt"></i>
+                <h3 class="grid-title">Events Schedule</h3>
+                <p class="grid-text">Check out our upcoming events and mark your calendar so you don't miss any action.</p>
+                <a href="./Schedule" class="grid-link">View Schedule <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="grid-item item-6">
+                <i class="grid-icon fas fa-users"></i>
+                <h3 class="grid-title">Community Hub</h3>
+                <p class="grid-text">Join our thriving community of gamers, builders, and creators. Share your creations, join discussions, and make new friends.</p>
+                <a href="#" class="grid-link">Join Community <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="grid-item item-7">
+                <i class="grid-icon fas fa-heart"></i>
+                <h3 class="grid-title">BloxdForge</h3>
+                <p class="grid-text">Bloxd events is sponsored by BloxdForge! make sure to try bloxdforge!</p>
+                <a href="https://bloxdforge.com/" class="grid-link" target="_blank">Try BloxdForge <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links">
+        <div class="container">
+            <div class="links-grid">
+                <div class="link-card">
+                    <i class="link-icon fab fa-discord"></i>
+                    <h3 class="link-title">Discord Community</h3>
+                    <p>Join our Discord server to chat with other players, get event updates, and participate in community events.</p>
+                    <a href="#" class="link-button">Join Discord</a>
+                </div>
+                
+                <div class="link-card">
+                    <i class="link-icon fas fa-question-circle"></i>
+                    <h3 class="link-title">Support Center</h3>
+                    <p>Need help? Visit our discord for FAQs, troubleshooting, and to contact our support team.</p>
+                    <a href="#" class="link-button">Get Help</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="container">
+        <p class="copyright">Sponserd by <a href="https://bloxdforge.com/" target="_blank">BloxdForge</a></p>
+    </footer>
+
+    <script>
+        // Simple animation for grid items on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const gridItems = document.querySelectorAll('.grid-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            gridItems.forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+
+            const ctaButton = document.querySelector('.cta-button');
+            ctaButton.addEventListener('click', function() {
+                window.scrollBy({
+                    top: -100,
+                    behavior: 'smooth'
+                }); 
+                this.innerText = 'Lets start!!';
+                this.style.backgroundColor = '#ff5c5c';
+                setTimeout(() => {
+                    this.innerText = 'Get Started';
+                    this.style.backgroundColor = '';
+                    window.scrollBy({
+                        top: 1100,
+                        behavior: 'smooth'
+                    }); 
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

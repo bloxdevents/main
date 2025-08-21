@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./imgs/favicon-32x32.png">
+    <link rel="icon" href="./imgs/favicon-16x16.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Notable&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Sign Up - Bloxd Events</title>
+    <style>
+        :root {
+            --text-color: #ffd4d4;
+            --btn-back: #ff7474;
+            --ui-back: #675858;
+            --ui-border: rgba(248, 206, 206, 0.16);
+            --accent: #ff8e8e;
+            --dark-bg: #181818;
+            --card-bg: rgba(39, 36, 36, 0.85);
+            --highlight: #ff5252;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            padding: 25px 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid var(--ui-border);
+        }
+
+        .logo {
+            font-family: 'Notable', sans-serif;
+            font-size: 2.2rem;
+            text-align: center;
+            color: var(--text-color);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 50px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .page-title p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #e2cbcb;
+        }
+
+        /* Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .option-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--ui-border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card-header {
+            padding: 25px 25px 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--ui-border);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .card-desc {
+            padding: 25px;
+            flex-grow: 1;
+            color: #e2cbcb;
+            font-size: 1.05rem;
+        }
+
+        .card-actions {
+            padding: 0 25px 25px;
+            text-align: center;
+        }
+
+        .option-button {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, var(--btn-back), var(--highlight));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        .option-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 82, 82, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-top: 1px solid var(--ui-border);
+            margin-top: auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #e2cbcb;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: #a18d8d;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto 50px;
+            }
+            
+            .page-title h1 {
+                font-size: 2.3rem;
+            }
+            
+            .page-title p {
+                font-size: 1.1rem;
+            }
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 class="logo">BLOXD<span>EVENTS</span></h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-title">
+                <h1>Choose!</h1>
+                <p>Select how you'd like to join the Bloxd Events development team.</p>
+            </div>
+
+            <div class="options-grid">
+                <!-- Option 1 -->
+                <div class="option-card">
+                    <div class="card-header">
+                        <i class="card-icon fas fa-cube"></i>
+                        <h2 class="card-title">Builder</h2>
+                    </div>
+                    <div class="card-desc">
+                        <p>Join as a builder to help build maps and more!</p>
+
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://tally.so/r/w2WVMA" class="option-button" target="_blank">Sign Up</a>
+                    </div>
+                </div>
+
+                <!-- Option 2 -->
+                <div class="option-card">
+                    <div class="card-header">
+                        <i class="card-icon fas fa-code"></i>
+                        <h2 class="card-title">Coder</h2>
+                    </div>
+                    <div class="card-desc">
+                        <p>Join as a coder to help with coding maps with command blocks!</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://tally.so/r/wQZXd8" class="option-button" target="_blank">Sign Up</a>
+                    </div>
+                </div>
+
+                <!-- Option 3 -->
+                <div class="option-card">
+                    <div class="card-header">
+                        <i class="card-icon fas fa-hands-helping"></i>
+                        <h2 class="card-title">Helper/Mod</h2>
+                    </div>
+                    <div class="card-desc">
+                        <p>Apply to become a Helper or Mod for Bloxd Events, help with monitoring, and more!</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://tally.so/r/wvZp4v" class="option-button" target="_blank">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+            <p class="copyright">Sponsored by <a href="https://bloxdforge.com/" target="_blank">BloxdForge</a></p>
+    </footer>
+</body>
+</html>
